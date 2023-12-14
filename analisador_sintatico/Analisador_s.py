@@ -50,8 +50,8 @@ Class: Employee
          and (ssn min 1 xsd:string)
     
     Individuals:
-        Chef,
-        Manager,
+        Chef1,
+        Manager1,
         Waiter1,
         Waiter2
 
