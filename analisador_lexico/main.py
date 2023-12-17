@@ -1,4 +1,5 @@
 import ply.lex as lex
+from prettytable import PrettyTable
 
 # Define the token names
 tokens = (
@@ -63,6 +64,7 @@ lexer.input(data)
 
 print("Gerando o arquivo analisador_lexico_output.txt...")
 
+token_count = {}
 # Abra o arquivo de saída
 with open('analisador_lexico_output.txt', 'w') as output_file:
     # Tokenize
@@ -70,6 +72,29 @@ with open('analisador_lexico_output.txt', 'w') as output_file:
         tok = lexer.token()
         if not tok: 
             break      # Não há mais entrada
-        output_file.write(str(tok) + '\n')  # Escreva o token no arquivo de saída
         
-print("Análise léxica concluída!")
+         # Adicione o tipo do token ao dicionário e incremente a contagem
+        token_type = tok.type
+        token_count[token_type] = token_count.get(token_type, 0) + 1
+        
+         # Escreva o token no arquivo de saída
+        output_file.write(str(tok) + '\n') 
+        
+        
+# Feche o arquivo de saída
+output_file.close()
+
+# Crie uma tabela para exibir a contagem de tokens
+table = PrettyTable()
+table.field_names = ["Token", "Contagem"]
+
+# Adicione as linhas à tabela
+for token_type, count in token_count.items():
+    table.add_row([token_type, count])
+
+# Exiba a tabela
+print("Contagem de tokens por tipo:")
+print(table)
+
+print("\nANALISADOR LÉXICO FINALIZADO!")
+print("O resultado da análise foi atribuido ao arquivo analisador_lexico_output.txt")

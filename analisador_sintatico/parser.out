@@ -1,0 +1,50 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    LBRACKET
+    RBRACKET
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> class_declaration expression
+Rule 2     expression -> empty
+Rule 3     class_declaration -> IDENTIFIER COLON IDENTIFIER
+Rule 4     class_declaration -> IDENTIFIER COLON IDENTIFIER SubClassOf COLON IDENTIFIER
+Rule 5     class_declaration -> IDENTIFIER COLON IDENTIFIER EquivalentTo COLON IDENTIFIER
+Rule 6     class_declaration -> IDENTIFIER COLON IDENTIFIER and LPAREN IDENTIFIER some IDENTIFIER RPAREN
+Rule 7     class_declaration -> IDENTIFIER COLON IDENTIFIER and LPAREN IDENTIFIER some IDENTIFIER and LPAREN IDENTIFIER min INTEGER IDENTIFIER COLON IDENTIFIER RPAREN RPAREN
+Rule 8     class_declaration -> IDENTIFIER COLON IDENTIFIER COLON IDENTIFIER LPAREN IDENTIFIER COMMA IDENTIFIER RPAREN
+Rule 9     class_declaration -> IDENTIFIER COLON IDENTIFIER COLON IDENTIFIER GT EQ INTEGER
+Rule 10    class_declaration -> IDENTIFIER COLON IDENTIFIER COLON IDENTIFIER LT INTEGER
+Rule 11    class_declaration -> IDENTIFIER COLON IDENTIFIER COLON LCURLY IDENTIFIER COMMA IDENTIFIER COMMA IDENTIFIER RCURLY
+
+Terminals, with rules where they appear
+
+COLON                : 3 4 4 5 5 6 7 7 8 8 9 9 10 10 11 11
+COMMA                : 8 11 11
+EquivalentTo         : 5
+GT                   : 9
+IDENTIFIER           : 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 7 7 7 8 8 8 8 8 9 9 9 10 10 10 11 11 11 11 11
+INTEGER              : 7 9 10
+LBRACKET             : 
+LCURLY               : 11
+LPAREN               : 6 7 7 8
+LT                   : 10
+RBRACKET             : 
+RCURLY               : 11
+RPAREN               : 6 7 7 8
+SubClassOf           : 4
+and                  : 6 7 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+EQ                   : 9
+class_declaration    : 1
+empty                : 2
+expression           : 1 0
+min                  : 7
+some                 : 6 7
+
