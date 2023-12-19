@@ -14,22 +14,23 @@ tokens = (
 )
 
 # Define regular expressions for simple tokens
-t_CLASS = r'Class'
+t_CLASS = r'[A-Z][a-zA-Z]*'
+
 t_EQUIVALENTTO = r'EquivalentTo'
 t_AND = r'and'
 t_SOME = r'some'
 t_MIN = r'min'
 t_XSD = r'xsd'
-t_INDIVIDUALS = r'Individuals'
 t_SUBCLASSOF = r'SubClassOf'
 t_DISJOINTCLASSES = r'DisjointClasses'
 t_HASBASE = r'hasBase'
 t_HASCALORICCONTENT = r'hasCaloricContent'
 t_HASPHONE = r'hasPhone'
-t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
+t_INDIVIDUALS = r'[A-Z][a-zA-Z]*(\d+)'
+#t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
 t_INTEGER = r'\d+'
 t_STRING = r'"[^"]*"'
-t_VALUE = r'[a-zA-Z_][a-zA-Z0-9_]*'
+#t_VALUE = r'[a-zA-Z_][a-zA-Z0-9_]*'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_LBRACKET = r'\['
