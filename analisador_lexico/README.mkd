@@ -1,27 +1,23 @@
 # Tipos de Tokens na Análise Léxica do OWL
 
-A análise léxica do código OWL fornecido identifica os seguintes tipos de tokens:
-
-- **IDENTIFIER:** Representa identificadores, que são nomes utilizados para identificar classes, propriedades, indivíduos, etc. Exemplos incluem 'Class', 'Customer', 'EquivalentTo', etc.
-
-- **COLON:** Representa o caractere ':' (dois pontos). No contexto do OWL, é frequentemente usado para separar nomes de classes, propriedades, etc., de seus tipos ou definições.
-
-- **LPAREN e RPAREN:** Representam os parênteses '(' e ')' respectivamente. São usados para definir escopos de expressões, como em '(hasTopping some CheeseTopping)'.
-
-- **COMMA:** Representa a vírgula (','). Usada para separar elementos em uma lista, como em 'Customer1, Customer2, Customer3'.
-
-- **INTEGER:** Representa um número inteiro, como em '1' ou '400'.
-
-- **LBRACKET e RBRACKET:** Representam os colchetes '[' e ']', usados para delimitar intervalos, como em 'xsd:integer[>= 400]'.
-
-- **GT e LT:** Representam os símbolos '>' e '<', usados para comparações, como em 'xsd:integer[< 400]'.
-
-- **LCURLY e RCURLY:** Representam as chaves '{' e '}'. Usadas para delimitar conjuntos, como em '{Hot, Medium, Mild}'.
-
-Esses tokens são os blocos de construção básicos que o analisador léxico (lexer) identifica ao percorrer o código fonte. Eles são a base para a construção de uma árvore sintática que representa a estrutura gramatical do código OWL, facilitando assim a análise semântica posterior. Se precisar de mais esclarecimentos sobre algum tipo específico ou sobre o processo de análise léxica em geral.
-
-
 Este script Python implementa um analisador léxico para a linguagem de descrição de ontologias OWL 2. Ele utiliza a biblioteca Ply (Python Lex-Yacc) para realizar a tokenização do arquivo de entrada e gera um arquivo de saída contendo a contagem de tokens reconhecidos.
+
+## Tokens Suportados
+
+### CLASS
+     Identifica nomes de classes começando com letra maiúscula.
+### PROPERTIES
+    Identifica propriedades utilizando o padrão hasProperty ou isPropertyOf.
+### INDIVIDUALS
+    Identifica indivíduos começando com letra maiúscula seguida de dígitos.
+### RESERVED_WORD 
+    Identifica palavras reservadas da linguagem OWL 2.
+### SPECIAL_SYMBOLS
+    Identifica símbolos especiais como parênteses, colchetes, chaves, operadores de comparação, vírgulas, etc.
+### DATA_TYPES
+    Identifica tipos de dados nativos das linguagens OWL, RDF, RDFs ou XML Schema.
+### CARDINALITIES
+    Identifica cardinalidades representadas por números inteiros.
 
 ## Uso
 
