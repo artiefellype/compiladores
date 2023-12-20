@@ -19,3 +19,36 @@ A análise léxica do código OWL fornecido identifica os seguintes tipos de tok
 - **LCURLY e RCURLY:** Representam as chaves '{' e '}'. Usadas para delimitar conjuntos, como em '{Hot, Medium, Mild}'.
 
 Esses tokens são os blocos de construção básicos que o analisador léxico (lexer) identifica ao percorrer o código fonte. Eles são a base para a construção de uma árvore sintática que representa a estrutura gramatical do código OWL, facilitando assim a análise semântica posterior. Se precisar de mais esclarecimentos sobre algum tipo específico ou sobre o processo de análise léxica em geral.
+
+
+Este script Python implementa um analisador léxico para a linguagem de descrição de ontologias OWL 2. Ele utiliza a biblioteca Ply (Python Lex-Yacc) para realizar a tokenização do arquivo de entrada e gera um arquivo de saída contendo a contagem de tokens reconhecidos.
+
+## Uso
+
+- Requisitos: 
+    - certifique-se de ter o python instalado
+    - Certifique-se de ter as bibliotecas Ply (pip install ply) e prettyTable (pip install prettyTable) instaladas  antes de executar o script.
+
+- Entrada: 
+    - Coloque seu código OWL 2 no arquivo owl2.txt.
+
+- Execução: 
+    - Execute o script Python (python nome_do_script.py).
+    
+- Saída: 
+    - A contagem de tokens reconhecidos será exibida no console e registrada no arquivo analisador_lexico_output.txt.
+
+## Exemplos de Uso
+
+```
+Class: Person
+  SubClassOf: 
+    hasGender some xsd:string,
+    hasAge some xsd:integer
+
+Individual: John
+  Types: 
+    Person,
+    hasGender value "Male",
+    hasAge min 18
+```

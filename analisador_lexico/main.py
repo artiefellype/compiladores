@@ -1,95 +1,71 @@
 import ply.lex as lex
 from prettytable import PrettyTable
 
-# Define the token names
+# Definição de nomes de token
 tokens = (
-    'CLASS', 'EQUIVALENTTO', 'AND', 'SOME', 'MIN', 'XSD', 'INDIVIDUALS',
-    'SUBCLASSOF', 'DISJOINTCLASSES', 'HASBASE', 'HASCALORICCONTENT', 'HASPHONE',
-    'CUSTOMER', 'EMPLOYEE', 'SPICINESS', 'IDENTIFIER', 'INTEGER', 'STRING', 'VALUE', 'LPAREN', 'RPAREN', 
-    'LBRACKET', 'RBRACKET', 'LCURLY', 'RCURLY', 'COMMA', 'COLON', 'GT', 'EQ', 'LT'
+    'CLASS', 'PROPERTIES', 'XSD', 'INDIVIDUALS', 'RESERVED_WORD', 'SPECIAL_SYMBOLS',
+    'DATA_TYPES' , 'CARDINALITIES'
 )
 
 # Define regular expressions for simple tokens
-t_CLASS = r'[A-Z][a-zA-Z]*'
 
-t_EQUIVALENTTO = r'EquivalentTo'
-t_AND = r'and'
-t_SOME = r'some'
-t_MIN = r'min'
-t_XSD = r'xsd'
-t_SUBCLASSOF = r'SubClassOf'
-t_DISJOINTCLASSES = r'DisjointClasses'
-t_HASBASE = r'hasBase'
-t_HASCALORICCONTENT = r'hasCaloricContent'
-t_HASPHONE = r'hasPhone'
 t_INDIVIDUALS = r'[A-Z][a-zA-Z]*(\d+)'
-#t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
-t_INTEGER = r'\d+'
-t_STRING = r'"[^"]*"'
-#t_VALUE = r'[a-zA-Z_][a-zA-Z0-9_]*'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_LBRACKET = r'\['
-t_RBRACKET = r'\]'
-t_LCURLY = r'\{'
-t_RCURLY = r'\}'
-t_COMMA = r','
-t_COLON = r':'
-t_GT = r'>'
-t_EQ = r'='
-t_LT = r'<'
+t_CLASS = r'[A-Z][a-zA-Z]*'
+t_DATA_TYPES = r'\b(?:owl:real|rdfs:domain|xsd:(?:integer|string|real))\b'
+t_CARDINALITIES = r'[0-9]+'
+t_RESERVED_WORD = r'\b((some|all|value|min|max|exactly|only|that|not|and|or)|(Class|EquivalentTo|Individuals|SubClassOf|DisjointClasses)\b:)'
+t_PROPERTIES = r'\bhas(?:[A-Z][a-zA-Z]*|\bis.*Of)|ssn\b'
+t_SPECIAL_SYMBOLS = r'\(|\)|\[|\]|\{|\}|<|>|=|,|:'
+t_XSD = r'xsd'
 t_ignore_COMMENT = r'\#.*'
-
-# Ignored characters
 t_ignore = ' \t\n'
 
 def t_error(t):
     print(f"Illegal character '{t.value[0]}'")
     t.lexer.skip(1)
 
-# Build the lexer
+# Build
 lexer = lex.lex()
 
 print("Analisando o arquivo owl2.txt...")
-# Abra o arquivo e leia o conteúdo
+
 with open('owl2.txt', 'r') as file:
     data = file.read()
 
-# Dê ao lexer alguns dados de entrada
+# dados de entrada para o lexer
 lexer.input(data)
 
 
 print("Gerando o arquivo analisador_lexico_output.txt...")
 
 token_count = {}
-# Abra o arquivo de saída
+
 with open('analisador_lexico_output.txt', 'w') as output_file:
-    # Tokenize
+    # Tokenização
     while True:
         tok = lexer.token()
         if not tok: 
-            break      # Não há mais entrada
+            break
         
-         # Adicione o tipo do token ao dicionário e incremente a contagem
+        
         token_type = tok.type
         token_count[token_type] = token_count.get(token_type, 0) + 1
         
-         # Escreva o token no arquivo de saída
+         # escrita no arquivo de saida
         output_file.write(str(tok) + '\n') 
         
         
-# Feche o arquivo de saída
 output_file.close()
 
-# Crie uma tabela para exibir a contagem de tokens
+# Criacao de tabela para exibir contagem dos tokens
 table = PrettyTable()
 table.field_names = ["Token", "Contagem"]
 
-# Adicione as linhas à tabela
+# Adicionar as linhas na tabela
 for token_type, count in token_count.items():
     table.add_row([token_type, count])
 
-# Exiba a tabela
+
 print("Contagem de tokens por tipo:")
 print(table)
 
