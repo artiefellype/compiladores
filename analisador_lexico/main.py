@@ -3,8 +3,13 @@ from prettytable import PrettyTable
 
 # Definição de nomes de token
 tokens = (
-    'CLASS', 'PROPERTIES', 'INDIVIDUALS', 'RESERVED_WORD', 'SPECIAL_SYMBOLS',
-    'DATA_TYPES' , 'CARDINALITIES'
+    'CLASS', 
+    'PROPERTIES', 
+    'INDIVIDUALS', 
+    'RESERVED_WORD', 
+    'SPECIAL_SYMBOLS',
+    'DATA_TYPES', 
+    'CARDINALITIES'
 )
 
 # Define regular expressions for simple tokens
