@@ -11,10 +11,10 @@ tokens = (
 
 t_INDIVIDUALS = r'[A-Z][a-zA-Z]*(\d+)'
 t_CLASS = r'[A-Z][a-zA-Z]*'
-t_DATA_TYPES = r'\b(?:owl:real|rdfs:domain|xsd:(?:integer|string|real))\b'
+t_DATA_TYPES = r'\b(?:owl:real|rdfs:domain|xsd:(?:integer|string|real|ssn))\b'
 t_CARDINALITIES = r'[0-9]+'
 t_RESERVED_WORD = r'\b((some|all|value|min|max|exactly|only|that|not|and|or)|(Class|EquivalentTo|Individuals|SubClassOf|DisjointClasses)\b:)'
-t_PROPERTIES = r'\bhas(?:[A-Z][a-zA-Z]*|\bis.*Of)|ssn|purchased[A-Z][a-zA-Z]+\b'
+t_PROPERTIES = r'\bhas(?:[A-Z][a-zA-Z]*|\bis.*Of)|purchased[A-Z][a-zA-Z]+\b'
 t_SPECIAL_SYMBOLS = r'\(|\)|\[|\]|\{|\}|<|>|=|,|:'
 t_ignore_COMMENT = r'\#.*'
 t_ignore = ' \t\n'
